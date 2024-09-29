@@ -17,35 +17,64 @@ body {
     max-width: 980px;
   }
   
+  /* Main grid */
   .grid {
     margin: 0 auto;
     padding: 0 20px;
     max-width: 980px;
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Tried to use columns shorthand, didn't allow much flexibility and column span property did
+    not act as expected.  fr flexibility seems better for non uniform grid layout. */
   }
   
+  /* Navigation menu */
   nav {
     background-color: #000;
     padding: .5em;
+    /* Set sticky header behavior */
+    position: sticky; /* Tried using fixed.  Compacted header and seemed to override flex layout for nav */
+    top: 0px;
   }
   
   nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
+    display: flex; /* Set flex for horizontal layout */
+    align-content: stretch; /* Stretch entire width of container */
+  }
+
+  nav li {
+    flex: 1; /* Make elements evenly spaced */
+    text-align: center;
   }
   
   nav a {
     color: #fff;
     text-decoration: none;
     padding: .5em 1em;
+    margin-bottom: 1%;
   }
   
+  /* Container for pictures in aside */
   .photos {
     list-style: none;
     margin: 0;
     padding: 0;
+    /* Set columns for picture grid */
+    columns: 2;
+    column-gap: 1%; /* Set size on gap between columns */
   }
 
+  /* Set spacing between images in columns */
+  li img {
+    margin-bottom: 1%;
+  }
+
+  /* In-article image */
   .feature {
       width: 200px;
+      /* Use float to set picture inline with text */
+      float: left;
+      margin: 0% 2% 2% 0%;
   }
